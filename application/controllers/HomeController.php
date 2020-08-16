@@ -3,31 +3,16 @@
 
 namespace Application\Controllers;
 
-
+use Application\Models\LockFileModel;
 use Application\Core\Controller;
-use Application\models\ZipModel;
-
+use Application\models\ZipFileModel;
+use application\lib\Date;
 class HomeController extends Controller
 {
     public function index()
     {
-        $model = new ZipModel();
-        $result = $model->select();
 
-        $this->view->render('главная страница');
-    }
-
-    public function addZip()
-    {
-        $model = new ZipModel();
-        if ($_FILES['file']) {
-            foreach ($_FILES['file'] as $key => $value) {
-                $arrZip[$key] = $value;
-            }
-            $name = $arrZip['name'];
-            $tmp = $arrZip['tmp_name'];
-
-
-        }
+        $this->view->render('startHome', 'главная страница');
+        // return $this->view->render('layouts/header','главная страница');
     }
 }

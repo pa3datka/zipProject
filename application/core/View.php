@@ -3,12 +3,10 @@
 
 namespace Application\Core;
 
-
 class View
 {
     public $path;
     public $route;
-    public $layout = 'default';
 
     public function __construct($route)
     {
@@ -16,8 +14,8 @@ class View
         $this->path = $route['controller'].'/'.$route['action'];
     }
 
-    public function render($title, $wars = [])
+    public function render($view,$title, $wars = [])
     {
-         require $_SERVER['DOCUMENT_ROOT'].'/resours/view/layouts/'.$this->layout.'.php';
+        return include_once $_SERVER['DOCUMENT_ROOT'].'/resources/view/'.$view.'.php';
     }
 }

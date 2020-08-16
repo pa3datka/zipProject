@@ -9,7 +9,7 @@ use Application\Core\View;
 {
     public $route;
     public $view;
-
+    public $params;
     public function __construct($route)
     {
         $this->route = $route;

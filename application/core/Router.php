@@ -18,7 +18,12 @@ class Router
 
     public function add($route, $params)
     {
-        $rout = '#^' . $route . '$#';
+        $arrRoute = explode('/', $route);
+        if (count($arrRoute) > 1) {
+            $rout = '#^' . $arrRoute[0] . '\/([0-9a-zA-Z]{5})$#';
+        } else {
+            $rout = '#^' . $route . '$#';
+        }
         $this->routes[$rout] = $params;
     }
 
@@ -27,8 +32,14 @@ class Router
         $url = trim($_SERVER['REQUEST_URI'], '/');
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
-                $this->params = $params;
-                return true;
+                if (count($matches) > 1) {
+                    $arr = ['param' => $matches[1]];
+                    $this->params = $params += $arr;
+                    return true;
+                } else {
+                    $this->params = $params;
+                    return true;
+                }
             }
         }
         return false;
@@ -43,10 +54,14 @@ class Router
                 if (method_exists($controller, $action)) {
                     $controllers = new $controller($this->params);
                     $controllers->$action();
+                } else {
+                    include $_SERVER['DOCUMENT_ROOT'] . '/resources/view/404.php';
                 }
+            } else {
+                include $_SERVER['DOCUMENT_ROOT'] . '/resources/view/404.php';
             }
         } else {
-            echo '404';
+            include $_SERVER['DOCUMENT_ROOT'] . '/resources/view/404.php';
         }
     }
 

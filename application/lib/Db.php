@@ -9,10 +9,10 @@ use PDO;
 class Db
 {
     private $host = '127.0.0.1';
-    private $db   = 'zipProject';
+    private $db   = 'zip';
     private $user = 'root';
     private $pass = 'root';
-     private $charset = 'utf8';
+    private $charset = 'utf8';
     private $pdo;
    protected static $_instance = null;
 
@@ -39,8 +39,8 @@ class Db
 
     public function getPDO()
     {
-        //return $this->pdo;
-        echo 'db';
+        return $this->pdo;
+
     }
 
 }

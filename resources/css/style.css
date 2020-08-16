@@ -1,0 +1,32 @@
+
+
+#add-zip {
+    padding-top: 2em;
+}
+
+#instruction {
+    background-color: darkseagreen;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#instruction, p {
+    margin: 0.1em;
+}
+
+footer {
+    position: fixed;
+    left: 0; bottom: 0;
+    padding: 10px;
+    background: forestgreen;
+    color: #fff;
+    width: 100%;
+}
+
+#show-url {
+    margin-top: 5em;
+}
+
+#error-save {
+    background-color: lightcoral;
+}

@@ -4,8 +4,13 @@ return [
         'controller' => 'home',
         'action' => 'index'
     ],
-    'add' => [
-        'controller' => 'home',
+    'addZip' => [
+        'controller' => 'zip',
         'action' => 'addZip'
+    ],
+    'zip/' => [
+        'controller' => 'zip',
+        'action' => 'showZip'
     ]
 ];
+
