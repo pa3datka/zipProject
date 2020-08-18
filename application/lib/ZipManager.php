@@ -13,12 +13,20 @@ class ZipManager extends ZipArchive
         'shtm', 'htaccess', 'htpasswd', 'ini', 'log', 'sh', 'htm', 'sql', 'spl', 'scgi', 'fcgi'
     ];
 
-    public function retrievedZip($pathDir, $fileName)
+    private $arrFile = [];
+    private $sizeZip = 1024000;
+
+    public function __construct($arrFile = null)
     {
-        if ($this->open($pathDir.'.zip')) {
-            if ($this->extractTo($_SERVER['DOCUMENT_ROOT'].'/public/'.$fileName)) {
+        $this->arrFile = $arrFile;
+    }
+
+    public function extractionZip($pathDir, $fileName)
+    {
+        if ($this->open($pathDir . '.zip')) {
+            if ($this->extractTo($_SERVER['DOCUMENT_ROOT'] . '/public/' . $fileName)) {
                 $this->close();
-                unlink($pathDir.'.zip');
+                unlink($pathDir . '.zip');
                 return true;
             } else {
                 return false;
@@ -27,33 +35,37 @@ class ZipManager extends ZipArchive
         return false;
     }
 
-    public function checkZip(array $arrFile)
+ //-----------------//
+    public function checkFileZip()
     {
         $flag = false;
-        if ($this->open($arrFile['tmp_name'])) {
-            $count = $this->count();
-            for ($i = 0; $i<= $count; $i++) {
-                $file = $this->getNameIndex($i);
-                if ($file == 'index.html') {
-                    $flag = true;
-                }
-                if ($this->comparisonTypes($file)) {
-                    $this->deleteName($file);
+        if ($this->arrFile['error'] == 0) {
+            if ($this->open($this->arrFile['tmp_name'])) {
+                if ($this->arrFile['size'] < $this->sizeZip) {
+                    $count = $this->count();
+                    for ($i = 0; $i <= $count; $i++) {
+                        $file = $this->getNameIndex($i);
+                        if ($file == 'index.html') {
+                            $this->deleteProhibitedFiles($file);
+                            $flag = true;
+                        }
+                    }
                 }
             }
-            $this->close();
         }
         return $flag;
     }
 
-    private  function comparisonTypes($file) {
+    private function deleteProhibitedFiles($file)
+    {
         foreach ($this->arrayForbiddenExtensions as $type) {
             if (preg_match("#\.$type$#", $file)) {
-                return true;
+               $this->deleteName($file);
             }
         }
-        return false;
     }
+
+
 
 }
 

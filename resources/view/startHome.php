@@ -4,14 +4,18 @@
     <p>1) Архив должен иметь ".zip" расширение.</p>
     <p>2) В корне архива должен находиться файл "index.html"</p>
 </div>
-
+<?php
+try {
+  if ($e);
+} catch (Exception $e) {
+    die($e->getMessage());
+}
+?>
 <form id="add-zip" action="/addZip" method="post" enctype="multipart/form-data">
     <blockquote class="blockquote">
         <p class="mb-0">Выберите файл</p>
     </blockquote>
-    <? if ($wars['error']) { ?>
-    <div id="error-save"><p><?= $wars['error'] ?></p></div>
-    <? } ?>
+
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <button class="btn btn-success" type="submit" name="save" id="inputGroupFileAddon03">Загрузить</button>
