@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\Lib;
+namespace application\lib;
 
 
 use ZipArchive;
@@ -14,19 +14,23 @@ class ZipManager extends ZipArchive
     ];
 
     private $arrFile = [];
-    private $sizeZip = 1024000;
+    private $sizeZip = 20971520;
 
-    public function __construct($arrFile = null)
+    public function __construct($arrFile)
     {
         $this->arrFile = $arrFile;
     }
 
-    public function extractionZip($pathDir, $fileName)
+    public function extractionZip($pathDir, $fileName, $dir)
     {
-        if ($this->open($pathDir . '.zip')) {
-            if ($this->extractTo($_SERVER['DOCUMENT_ROOT'] . '/public/' . $fileName)) {
+        $patch = $_SERVER['DOCUMENT_ROOT'] . '/public/'. $dir;
+        if (!is_dir($patch)) {
+            mkdir($patch);
+        }
+        if ($this->open($pathDir )) {
+            if ($this->extractTo($patch . '/' . $fileName)) {
                 $this->close();
-                unlink($pathDir . '.zip');
+                unlink($pathDir);
                 return true;
             } else {
                 return false;
@@ -45,8 +49,8 @@ class ZipManager extends ZipArchive
                     $count = $this->count();
                     for ($i = 0; $i <= $count; $i++) {
                         $file = $this->getNameIndex($i);
+                        $this->deleteProhibitedFiles($file);
                         if ($file == 'index.html') {
-                            $this->deleteProhibitedFiles($file);
                             $flag = true;
                         }
                     }
@@ -64,8 +68,6 @@ class ZipManager extends ZipArchive
             }
         }
     }
-
-
 
 }
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Application\Models;
+namespace application\models;
 
-use Application\Core\Model;
+use application\core\Model;
 use PDO;
 
 class ZipFileModel extends Model

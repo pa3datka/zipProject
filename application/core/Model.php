@@ -1,11 +1,12 @@
 <?php
 
 
-namespace Application\Core;
+namespace application\core;
 
 
-use Application\Lib\Db;
+use application\lib\Db;
 use PDO;
+
 
 class Model
 {

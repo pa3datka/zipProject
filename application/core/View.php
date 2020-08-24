@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\Core;
+namespace application\core;
 
 class View
 {

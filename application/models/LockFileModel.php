@@ -3,7 +3,7 @@
 
 namespace application\models;
 
-use Application\Core\Model;
+use application\core\Model;
 
 class LockFileModel extends Model
 {

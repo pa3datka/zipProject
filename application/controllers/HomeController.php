@@ -1,12 +1,10 @@
 <?php
 
 
-namespace Application\Controllers;
+namespace application\controllers;
 
-use Application\Models\LockFileModel;
-use Application\Core\Controller;
-use Application\models\ZipFileModel;
-use application\lib\Date;
+use application\core\Controller;
+
 class HomeController extends Controller
 {
     public function index()
