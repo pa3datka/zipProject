@@ -8,7 +8,7 @@ class FileManager
 {
     public function checkDir() :void
     {
-        $count = file_get_contents('application/txtFile/counter.txt');
+        $count = file_get_contents('application/txtFile/counterSaveFile.txt');
         if ($count >= 10) {
             $path = $_SERVER['DOCUMENT_ROOT'] .DIRECTORY_SEPARATOR. 'public';
             $arrDir = array_diff(scandir($path), ['.', '..']);
@@ -18,10 +18,10 @@ class FileManager
                    $this->rmRec($path . DIRECTORY_SEPARATOR . $dir);
                 }
             }
-            file_put_contents('application/txtFile/counter.txt', 0);
+            file_put_contents('application/txtFile/counterSaveFile.txt', 0);
         } else {
             ++$count;
-            file_put_contents('application/txtFile/counter.txt',$count);
+            file_put_contents('application/txtFile/counterSaveFile.txt',$count);
         }
     }
 
