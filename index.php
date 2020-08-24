@@ -1,7 +1,6 @@
 <?php
 
 use Application\Core\Router;
-use Application\Lib\Date;
 
 include 'application/php/phpFunction.php';
 
