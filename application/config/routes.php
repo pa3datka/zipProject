@@ -8,7 +8,7 @@ return [
         'controller' => 'zip',
         'action' => 'addZip'
     ],
-    'zip/' => [
+    '([0-9a-zA-Z]{5})' => [
         'controller' => 'zip',
         'action' => 'showZip'
     ]

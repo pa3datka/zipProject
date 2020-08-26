@@ -23,7 +23,7 @@ class ZipController extends Controller
             $zip = new ZipManager($arrFile);
             if ($zip->checkFileZip()) {
                 if ($zip->extractionZip($arrFile['tmp_name'], $arrFile['name'], $this->getOneSymbol(date('w')))) {
-                $url = $_SERVER['HTTP_REFERER'].'zip/'.$arrFile['name'];
+                $url = $_SERVER['HTTP_REFERER'].$arrFile['name'];
                 (new LockFileModel())->saveLock(['ip'=> $_SERVER['REMOTE_ADDR'], 'name' =>$arrFile['name']]);
                 $this->view->render('showURL','URL', ['url' => $url]);
             } else {
@@ -40,7 +40,7 @@ class ZipController extends Controller
 
     public function showZip()
     {
-        $fileName = $this->route['param'];
+      $fileName = $this->route['param'];
         $arrStr = str_split($fileName);
 
         $publicDir = $_SERVER['DOCUMENT_ROOT'] . '/public/'. $arrStr[0]. '/' . $fileName;
