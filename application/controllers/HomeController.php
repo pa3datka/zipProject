@@ -1,17 +1,14 @@
 <?php
 
 
-namespace Application\Controllers;
+namespace application\controllers;
 
-use Application\Models\LockFileModel;
-use Application\Core\Controller;
-use Application\models\ZipFileModel;
-use application\lib\Date;
+use application\core\Controller;
+
 class HomeController extends Controller
 {
     public function index()
     {
-        $this->view->render('startHome', 'главная страница');
-        // return $this->view->render('layouts/header','главная страница');
+        $this->view->render('startHome', 'Home');
     }
 }

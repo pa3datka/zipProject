@@ -1,8 +1,8 @@
 RewriteEngine on
 RewriteBase /
 #ErrorDocument 404 http://zipproject
-php_value session.gc_maxlifetime 604800
+#php_value session.gc_maxlifetime 604800
 
 RewriteCond %(REQUEST_URI) !-d [OR]
 RewriteCond %(REQUEST_URI) !-f
-RewriteRule !html|css$ index.php
+RewriteRule !html|css|js$ index.php

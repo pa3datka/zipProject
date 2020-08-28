@@ -5,12 +5,12 @@ return [
         'action' => 'index'
     ],
     'addZip' => [
-        'controller' => 'zip',
+        'controller' => 'archive',
         'action' => 'addZip'
     ],
-    'zip/' => [
-        'controller' => 'zip',
-        'action' => 'showZip'
+    '([0-9a-zA-Z]{5})' => [
+        'controller' => 'file',
+        'action' => 'showProject'
     ]
 ];
 

@@ -11,6 +11,7 @@ try {
     die($e->getMessage());
 }
 ?>
+
 <form id="add-zip" action="/addZip" method="post" enctype="multipart/form-data">
     <blockquote class="blockquote">
         <p class="mb-0">Выберите файл</p>

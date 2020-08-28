@@ -15,3 +15,8 @@ function rmRec($path)
         rmdir($path);
     }
 }
+
+function __e() {
+    $textError = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/lang/ru/error.json');
+    return json_decode($textError);
+}
