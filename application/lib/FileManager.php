@@ -3,9 +3,15 @@
 
 namespace application\lib;
 
-
+/**
+ * Class FileManager
+ * @package application\lib
+ */
 class FileManager
 {
+    /**
+     * @return void
+     */
     public function checkDir() :void
     {
         $count = file_get_contents('application/txtFile/counterSaveFile.txt');
@@ -25,6 +31,9 @@ class FileManager
         }
     }
 
+    /**
+     * @param $path
+     */
     public function rmRec($path) :void
     {
         if (is_file($path)) unlink($path);

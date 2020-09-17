@@ -5,6 +5,10 @@ namespace application\lib;
 
 use ZipArchive;
 
+/**
+ * Class ManagerZip
+ * @package application\lib
+ */
 class ManagerZip extends AbstractManager
 {
 
@@ -19,7 +23,9 @@ class ManagerZip extends AbstractManager
         $this->arrFiles = $tmpFile;
     }
 
-
+    /**
+     * @return bool
+     */
     public function extractionArchive(): bool
     {
         if ($this->class->open($this->arrFiles['tmp_name'])) {
@@ -38,7 +44,9 @@ class ManagerZip extends AbstractManager
         return false;
     }
 
-
+    /**
+     * @return bool
+     */
     public function checkFileArchive(): bool
     {
         $flag = false;
@@ -63,7 +71,7 @@ class ManagerZip extends AbstractManager
     /**
      * @param $file
      */
-    public function deleteProhibitedFiles($file)
+    public function deleteProhibitedFiles($file) :void
     {
         foreach ($this->arrayForbiddenExtensions as $type) {
             if (preg_match("#\.$type$#", $file)) {

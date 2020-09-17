@@ -19,7 +19,7 @@ try {
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <button class="btn btn-success" type="submit" name="save" id="inputGroupFileAddon03">Загрузить</button>
+            <button class="btn btn-success" type="submit" name="save" id="inputGroupFileAddon03" disabled>Загрузить</button>
         </div>
         <div class="custom-file">
             <label class="custom-file-label" for="inputGroupFile03">

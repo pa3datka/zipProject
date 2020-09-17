@@ -33,8 +33,6 @@ class ArchiveController extends Controller
         } else {
             echo __e()->error_time;
         }
-
-
     }
 
     private function generationName(): string

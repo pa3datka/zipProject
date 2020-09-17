@@ -5,4 +5,4 @@ RewriteBase /
 
 RewriteCond %(REQUEST_URI) !-d [OR]
 RewriteCond %(REQUEST_URI) !-f
-RewriteRule !html|css|js$ index.php
+RewriteRule !(html|css|js)$ index.php

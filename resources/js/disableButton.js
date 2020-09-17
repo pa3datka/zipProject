@@ -1,6 +1,8 @@
 "use strict"
-let umploadButton = document.querySelector('#inputGroupFileAddon03');
-let fileInput = document.querySelector('.custom-file-input');
 
-  document.write('good');
-  alert('good');
+let buttonUmpload = document.getElementById('inputGroupFileAddon03');
+let fileInput = document.getElementById('inputGroupFile03');
+
+fileInput.addEventListener('input', function () {
+  buttonUmpload.disabled = false;
+});

@@ -4,6 +4,10 @@
 namespace application\lib;
 use application\lib\ManagerZip;
 
+/**
+ * Class CreatorManagerArhive
+ * @package application\lib
+ */
 class CreatorManagerArhive
 {
     private array $arrayExpansions = ['zip' => 'application/x-zip-compressed'];
