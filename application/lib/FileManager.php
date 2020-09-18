@@ -3,6 +3,7 @@
 
 namespace application\lib;
 
+<<<<<<< HEAD
 /**
  * Class FileManager
  * @package application\lib
@@ -12,6 +13,11 @@ class FileManager
     /**
      * @return void
      */
+=======
+
+class FileManager
+{
+>>>>>>> 13952c4ca0408ef324bb756bd17f17f81e194151
     public function checkDir() :void
     {
         $count = file_get_contents('application/txtFile/counterSaveFile.txt');
@@ -31,9 +37,12 @@ class FileManager
         }
     }
 
+<<<<<<< HEAD
     /**
      * @param $path
      */
+=======
+>>>>>>> 13952c4ca0408ef324bb756bd17f17f81e194151
     public function rmRec($path) :void
     {
         if (is_file($path)) unlink($path);
